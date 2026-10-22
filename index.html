@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The Onion — Area Woman Spends 10 Years Transforming Complexity Into Clarity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --onion-green: #1a6b3b;
+      --onion-green-light: #e8f5ee;
+      --ink: #1a1a18;
+      --gray: #4a4740;
+      --light-gray: #f7f5f0;
+      --rule: #c9c4b8;
+      --breaking-red: #a31621;
+      --paper: #f9f7f2;
+      --paper-dark: #ede9e0;
+      --headline: "Playfair Display", Georgia, serif;
+      --body: "Lora", Georgia, serif;
+      --sans: "Libre Franklin", -apple-system, Helvetica, sans-serif;
+    }
+
+    html {
+      background: #d4cfc6;
+      background-image:
+        radial-gradient(ellipse at center, #d4cfc6 30%, #b8b2a6 100%);
+      min-height: 100%;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0;
+      line-height: 1.6;
+      position: relative;
+      box-shadow: 0 0 60px rgba(0,0,0,0.15);
+    }
+
+    /* Newspaper texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9998;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 1;
+    }
+
+    /* Subtle aged paper grain via repeating gradient */
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(180,160,120,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 100%, rgba(160,140,100,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(200,190,170,0.03) 0%, transparent 70%);
+    }
+
+
+    /* ─── BREAKING NEWS TICKER ─── */
+    .breaking-ticker {
+      background: #1a1a18;
+      overflow: hidden;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .breaking-badge {
+      background: var(--breaking-red);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+    .ticker-track {
+      display: flex;
+      animation: tickerScroll 50s linear infinite;
+      white-space: nowrap;
+      padding-left: 16px;
+    }
+    .ticker-track span {
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 400;
+      padding-right: 50px;
+      opacity: 0.9;
+    }
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── TOP NAV BAR ─── */
+    .top-bar {
+      background: #1a1a18;
+      padding: 10px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .top-bar-links {
+      display: flex;
+      gap: 20px;
+    }
+    .top-bar-links a {
+      color: #ccc;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .top-bar-links a:hover { color: #fff; }
+    .top-bar-right {
+      font-family: var(--sans);
+      font-size: 10px;
+      color: #888;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── MASTHEAD ─── */
+    .masthead {
+      text-align: center;
+      padding: 28px 32px 20px;
+      border-bottom: 3px solid var(--ink);
+      position: relative;
+    }
+    .masthead::after {
+      content: '';
+      display: block;
+      border-bottom: 1px solid var(--ink);
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+    }
+    .masthead-tagline {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--onion-green);
+      margin-bottom: 6px;
+    }
+    .masthead-title {
+      font-family: var(--headline);
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 900;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+    .masthead-subtitle {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--gray);
+      margin-top: 8px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── SECTION NAV ─── */
+    .section-nav {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 12px 32px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--paper-dark);
+    }
+    .section-nav a {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 4px 0;
+      position: relative;
+    }
+    .section-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--onion-green);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+    .section-nav a:hover::after { width: 100%; left: 0; }
+    .section-nav a.active::after { width: 100%; left: 0; }
+    .section-nav a.active { color: var(--onion-green); }
+
+    /* ─── HERO IMAGE ─── */
+    .hero-image {
+      max-height: 420px;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-image img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 420px;
+      animation: kenBurns 20s ease-in-out infinite alternate;
+    }
+    @keyframes kenBurns {
+      from { transform: scale(1); }
+      to { transform: scale(1.04); }
+    }
+    .hero-image figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: #ddd;
+      font-family: var(--sans);
+      font-size: 12px;
+      padding: 40px 32px 12px;
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .content { padding: 0 32px; }
+
+    /* ─── LEAD STORY (centered, newspaper front-page) ─── */
+    .lead {
+      padding: 40px 0 32px;
+      border-bottom: 2px solid var(--ink);
+      text-align: center;
+    }
+    .lead-kicker {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--breaking-red);
+      margin-bottom: 14px;
+    }
+    .lead h1 {
+      font-family: var(--headline);
+      font-size: clamp(26px, 4vw, 44px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.5px;
+      max-width: 22ch;
+      margin: 0 auto;
+    }
+    .lead .dek {
+      margin: 18px auto 0;
+      max-width: 52ch;
+      font-family: var(--body);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--gray);
+    }
+    .lead-body {
+      max-width: 680px;
+      margin: 28px auto 0;
+      text-align: left;
+      column-count: 2;
+      column-gap: 40px;
+      column-rule: 1px solid var(--rule);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--gray);
+    }
+    .lead-body p { break-inside: avoid; margin-bottom: 14px; }
+    .lead-body p:first-child::first-letter {
+      font-family: var(--headline);
+      font-weight: 900;
+      font-size: 56px;
+      float: left;
+      line-height: 0.78;
+      padding-right: 8px;
+      padding-top: 4px;
+      color: var(--ink);
+    }
+
+    /* Lead portrait — floated inside body text, newspaper print style */
+    .lead-portrait {
+      float: right;
+      width: 180px;
+      margin: 0 0 12px 20px;
+      break-inside: avoid;
+    }
+    .lead-portrait img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%) contrast(1.1) brightness(1.05);
+      mix-blend-mode: multiply;
+    }
+    .lead-portrait figcaption {
+      font-family: var(--sans);
+      font-size: 10px;
+      color: var(--gray);
+      margin-top: 6px;
+      line-height: 1.4;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 6px;
+    }
+    .lead-portrait figcaption strong { color: var(--ink); }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 3px double var(--ink);
+      border-bottom: 3px double var(--ink);
+      margin: 0;
+      text-align: center;
+      background: var(--paper);
+    }
+    .stat-item {
+      padding: 22px 16px 20px;
+      border-right: 1px solid var(--rule);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: var(--headline);
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--gray);
+      margin-top: 8px;
+      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ─── SECTION LABELS ─── */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 6px;
+      margin-top: 44px;
+      margin-bottom: 24px;
+    }
+    .section-head h3 {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--onion-green);
+    }
+    .section-head .hint {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--gray);
+      font-style: italic;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    /* ─── CERTIFICATIONS: EXHIBIT STRIP ─── */
+    .cert-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .cert {
+      padding: 4px 22px 8px;
+      border-left: 1px solid var(--rule);
+    }
+    .cert:first-child { border-left: none; padding-left: 0; }
+    .cert:last-child { padding-right: 0; }
+    .cert .exhibit {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--onion-green);
+      padding: 3px 8px;
+      margin-bottom: 12px;
+    }
+    .cert h4 {
+      font-family: var(--headline);
+      font-weight: 900;
+      font-size: 17px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .cert p {
+      font-family: var(--body);
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--gray);
+    }
+
+    /* ─── NEWS GRID ─── */
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 0 44px;
+    }
+    .news-featured {
+      border-right: 1px solid var(--rule);
+      padding-right: 44px;
+    }
+    .news-featured h4 {
+      font-family: var(--headline);
+      font-weight: 900;
+      font-size: 30px;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .news-featured .dek-sm {
+      font-family: var(--body);
+      font-style: italic;
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .news-featured p {
+      font-family: var(--body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .news-side .brief { margin-bottom: 26px; }
+    .news-side .brief:last-child { margin-bottom: 0; }
+    .news-side .brief h4 {
+      font-family: var(--headline);
+      font-weight: 900;
+      font-size: 19px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .news-side .brief p {
+      font-family: var(--body);
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--gray);
+    }
+    .news-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 36px;
+      margin-top: 30px;
+      border-top: 1px solid var(--ink);
+      padding-top: 22px;
+    }
+    .news-row .brief { margin-bottom: 0; }
+    .news-row .brief h4 {
+      font-family: var(--headline);
+      font-weight: 900;
+      font-size: 17px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .news-row .brief p {
+      font-family: var(--body);
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--gray);
+    }
+    .news-row .brief + .brief {
+      border-left: 1px solid var(--rule);
+      padding-left: 36px;
+    }
+
+    /* ─── PULL QUOTE BAND ─── */
+    .pull-band {
+      background: var(--onion-green);
+      color: #fff;
+      text-align: center;
+      padding: 52px 28px 46px;
+      margin: 44px -32px 0;
+      position: relative;
+    }
+    .pull-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .pull-band blockquote {
+      font-family: var(--headline);
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(22px, 3.4vw, 34px);
+      line-height: 1.25;
+      max-width: 26ch;
+      margin: 0 auto;
+    }
+    .pull-band cite {
+      display: block;
+      margin-top: 16px;
+      font-family: var(--sans);
+      font-style: normal;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #BFE0CB;
+    }
+
+    /* ─── AI DESK ─── */
+    .ai-lead {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 0 44px;
+      align-items: start;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 26px;
+      margin-bottom: 26px;
+    }
+    .ai-lead h4 {
+      font-family: var(--headline);
+      font-weight: 900;
+      font-size: 26px;
+      line-height: 1.12;
+    }
+    .ai-lead .dek-sm {
+      font-family: var(--body);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--gray);
+      margin-top: 10px;
+    }
+    .ai-lead p {
+      font-family: var(--body);
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+    .ai-trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 36px;
+    }
+    .ai-trio .brief { margin-bottom: 0; }
+    .ai-trio .brief h4 {
+      font-family: var(--headline);
+      font-weight: 900;
+      font-size: 17px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .ai-trio .brief p {
+      font-family: var(--body);
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--gray);
+    }
+    .ai-trio .brief + .brief {
+      border-left: 1px solid var(--rule);
+      padding-left: 36px;
+    }
+
+    /* ─── EDITOR'S NOTE ─── */
+    .editors-note {
+      margin: 44px auto 0;
+      max-width: 640px;
+      border-top: 3px double var(--ink);
+      border-bottom: 3px double var(--ink);
+      padding: 22px 16px;
+      text-align: center;
+      background: var(--paper-dark);
+    }
+    .editors-note .en-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--breaking-red);
+      margin-bottom: 10px;
+    }
+    .editors-note p {
+      font-family: var(--body);
+      font-size: 15px;
+      font-style: italic;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ─── QUOTES (3-col) ─── */
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .quote-col {
+      padding: 6px 26px 10px;
+      text-align: center;
+    }
+    .quote-col + .quote-col { border-left: 1px solid var(--rule); }
+    .quote-col .mark {
+      font-family: var(--headline);
+      font-size: 52px;
+      line-height: 0.6;
+      color: var(--onion-green);
+      font-weight: 900;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .quote-col h4 {
+      font-family: var(--headline);
+      font-weight: 900;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+    .quote-col .quote-body {
+      margin-top: 10px;
+      font-family: var(--body);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ─── CLASSIFIEDS ─── */
+    .classifieds-box {
+      border: 2px solid var(--ink);
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 40px;
+      margin-top: 36px;
+      background: var(--paper-dark);
+    }
+    .ad {
+      font-size: 15px;
+    }
+    .ad .ad-lead {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .ad p {
+      font-family: var(--body);
+      color: var(--gray);
+      margin-top: 4px;
+      font-size: 14px;
+    }
+
+    /* ─── CONNECT BOX ─── */
+    .connect-box {
+      margin-top: 36px;
+      border: 2px solid var(--onion-green);
+      padding: 36px 40px;
+      background: var(--paper);
+    }
+    .connect-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--onion-green);
+      margin-bottom: 12px;
+    }
+    .connect-hed {
+      font-family: var(--headline);
+      font-weight: 900;
+      font-size: clamp(22px, 3vw, 30px);
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .connect-body {
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+    .connect-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .connect-links a {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      transition: all 0.2s ease;
+    }
+    .connect-links .btn-primary {
+      background: var(--onion-green);
+      color: #fff;
+      border: 2px solid var(--onion-green);
+    }
+    .connect-links .btn-primary:hover {
+      background: #145a30;
+      border-color: #145a30;
+    }
+    .connect-links .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 2px solid var(--ink);
+    }
+    .connect-links .btn-outline:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    /* ─── CORRECTION ─── */
+    .correction {
+      margin-top: 44px;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+    .correction-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--onion-green);
+      margin-bottom: 8px;
+    }
+    .correction p {
+      font-family: var(--body);
+      font-size: 16px;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+
+    /* ─── FOOTER ─── */
+    .site-footer {
+      background: #1a1a18;
+      color: #ccc;
+      padding: 40px 32px;
+      margin-top: 48px;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #333;
+      margin-bottom: 24px;
+    }
+    .footer-brand {
+      font-family: var(--headline);
+      font-size: 28px;
+      font-weight: 900;
+      font-style: italic;
+      color: #fff;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: #999;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ─── ANIMATIONS & MOTION DESIGN ─── */
+
+    /* Reading progress bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--onion-green), #2da35a);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.08s linear;
+      box-shadow: 0 0 8px rgba(26,107,59,0.4);
+    }
+
+    /* Page entrance */
+    body {
+      animation: pageIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Masthead stamp */
+    .masthead-title {
+      animation: stampIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+    }
+    @keyframes stampIn {
+      from { opacity: 0; transform: scale(1.15) rotate(-1deg); }
+      to { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+    .masthead-tagline { animation: fadeSlideDown 0.5s ease 0.1s both; }
+    .masthead-subtitle { animation: fadeSlideDown 0.5s ease 0.5s both; }
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Lead headline slam */
+    .lead h1 { animation: slamIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both; }
+    @keyframes slamIn {
+      from { opacity: 0; transform: translateY(24px) scaleY(0.95); }
+      to { opacity: 1; transform: translateY(0) scaleY(1); }
+    }
+    .lead .dek { animation: fadeUp 0.6s ease 0.9s both; }
+    .lead-kicker { animation: fadeUp 0.4s ease 0.4s both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll-reveal with stagger support */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Pull band — slide up */
+    .pull-band {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .pull-band.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stat items — pop with stagger */
+    .stat-item {
+      opacity: 0;
+      transform: translateY(16px) scale(0.95);
+      transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .stat-item.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .stat-item.visible .stat-number {
+      animation: countPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s forwards;
+    }
+    @keyframes countPop {
+      from { transform: scale(0.6); opacity: 0; }
+      50% { transform: scale(1.1); }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Connect box glow on reveal */
+    .connect-box {
+      transition: box-shadow 0.6s ease, transform 0.3s ease;
+    }
+    .connect-box.visible {
+      animation: borderGlow 2s ease 0.3s 1;
+    }
+    @keyframes borderGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(26,107,59,0); }
+      50% { box-shadow: 0 0 0 6px rgba(26,107,59,0.12); }
+    }
+
+    /* Footer slide */
+    .site-footer {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .site-footer.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── HEADLINE HOVER INTERACTIONS ─── */
+    .news-featured h4,
+    .news-side .brief h4,
+    .news-row .brief h4,
+    .ai-lead h4,
+    .ai-trio .brief h4,
+    .cert h4 {
+      transition: color 0.2s ease, transform 0.2s ease;
+      cursor: default;
+    }
+    .news-featured h4:hover,
+    .news-side .brief h4:hover,
+    .news-row .brief h4:hover,
+    .ai-lead h4:hover,
+    .ai-trio .brief h4:hover,
+    .cert h4:hover {
+      color: var(--onion-green);
+      transform: translateX(3px);
+    }
+
+    /* Quote marks bounce on hover */
+    .quote-col .mark {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .quote-col:hover .mark {
+      transform: scale(1.3) rotate(-5deg);
+    }
+
+    /* Exhibit badges — subtle pulse on hover */
+    .cert .exhibit {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cert:hover .exhibit {
+      transform: scale(1.05);
+      box-shadow: 0 2px 8px rgba(26,107,59,0.3);
+    }
+
+    /* Section nav — ink spread on active */
+    .section-nav a {
+      transition: color 0.2s ease, transform 0.15s ease;
+    }
+    .section-nav a:hover {
+      transform: translateY(-1px);
+    }
+
+    /* Button hover — lift + shadow */
+    .connect-links .btn-primary {
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .connect-links .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(26,107,59,0.3);
+    }
+    .connect-links .btn-outline {
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .connect-links .btn-outline:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Stat number hover — subtle grow */
+    .stat-number {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+      display: inline-block;
+    }
+    .stat-item:hover .stat-number {
+      transform: scale(1.1);
+      color: var(--onion-green);
+    }
+
+    /* Pull band quote — gentle float */
+    .pull-band blockquote {
+      transition: transform 0.4s ease;
+    }
+    .pull-band:hover blockquote {
+      transform: translateY(-3px);
+    }
+
+    /* Breaking badge pulse */
+    .breaking-badge {
+      animation: badgePulse 2s ease-in-out infinite;
+    }
+    @keyframes badgePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    /* Hero image hover zoom */
+    .hero-image {
+      cursor: crosshair;
+    }
+    .hero-image:hover img {
+      animation-play-state: paused;
+      transform: scale(1.06);
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Smooth anchor scrolling */
+    html { scroll-behavior: smooth; }
+
+    /* Correction — typewriter reveal */
+    .correction p {
+      transition: opacity 0.6s ease;
+    }
+
+    /* Reduced motion — respect user preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .content { padding: 0 18px; }
+      .lead-body { column-count: 1; }
+      .lead-portrait { float: none; width: 140px; margin: 0 auto 16px; }
+      .stats-bar { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--rule); }
+      .stat-item:last-child { border-bottom: none; }
+      .cert-strip { grid-template-columns: 1fr; }
+      .cert { border-left: none; padding: 16px 0; border-top: 1px solid var(--rule); }
+      .cert:first-child { border-top: none; padding-top: 0; }
+      .news-grid { grid-template-columns: 1fr; }
+      .news-featured { border-right: none; padding-right: 0; margin-bottom: 26px; }
+      .news-featured h4 { font-size: 24px; }
+      .news-row { grid-template-columns: 1fr; gap: 22px 0; }
+      .news-row .brief + .brief { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 22px; }
+      .pull-band { margin: 36px -18px 0; padding: 36px 18px 32px; }
+      .ai-lead { grid-template-columns: 1fr; gap: 12px 0; }
+      .ai-lead h4 { font-size: 22px; }
+      .ai-trio { grid-template-columns: 1fr; gap: 22px 0; }
+      .ai-trio .brief + .brief { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 22px; }
+      .quotes-grid { grid-template-columns: 1fr; }
+      .quote-col { padding: 18px 6px; }
+      .quote-col + .quote-col { border-left: none; border-top: 1px solid var(--rule); }
+      .classifieds-box { grid-template-columns: 1fr; }
+      .section-nav { flex-wrap: wrap; gap: 12px; }
+      .top-bar { flex-direction: column; gap: 8px; text-align: center; }
+      .footer-top { flex-direction: column; gap: 16px; }
+      .connect-box { padding: 24px 20px; }
+      .connect-links { flex-direction: column; }
+      .connect-links a { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BREAKING NEWS TICKER -->
+  <div class="breaking-ticker">
+    <div class="breaking-badge">BREAKING</div>
+    <div class="ticker-track">
+      <span>54% increase in digital tool adoption at leading medical center&hellip;</span>
+      <span>Consumer brand&rsquo;s Agentforce launched on time, on brief&hellip;</span>
+      <span>Contractor portal goes live, day one adoption exceeds projections&hellip;</span>
+      <span>Experience Cloud delivered production-ready, first pass&hellip;</span>
+      <span>Data Cloud certification achieved with AI-generated study method&hellip;</span>
+      <span>54% increase in digital tool adoption at leading medical center&hellip;</span>
+      <span>Consumer brand&rsquo;s Agentforce launched on time, on brief&hellip;</span>
+      <span>Contractor portal goes live, day one adoption exceeds projections&hellip;</span>
+      <span>Experience Cloud delivered production-ready, first pass&hellip;</span>
+      <span>Data Cloud certification achieved with AI-generated study method&hellip;</span>
+    </div>
+  </div>
+
+  <!-- TOP NAV -->
+  <div class="top-bar">
+    <div class="top-bar-links">
+      <a href="#lead">Lead</a>
+      <a href="#certs">Certifications</a>
+      <a href="#briefs">Projects</a>
+      <a href="#ai">AI &amp; Teaching</a>
+      <a href="#praise">Praise</a>
+      <a href="#classifieds">Classifieds</a>
+    </div>
+    <div class="top-bar-right">Thursday, July 10, 2026</div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-tagline">All The UX That&rsquo;s Fit To Ship</div>
+    <div class="masthead-title">The Onion</div>
+    <div class="masthead-subtitle">Vol. 62 &bull; Issue 27 &bull; Irina Kelly &bull; Senior Experience Designer &bull; Salesforce</div>
+  </div>
+
+  <!-- SECTION NAV -->
+  <nav class="section-nav">
+    <a href="#lead" class="active">Lead</a>
+    <a href="#certs">Certifications</a>
+    <a href="#briefs">News Briefs</a>
+    <a href="#ai">AI &amp; Leadership</a>
+    <a href="#praise">Praise</a>
+    <a href="#classifieds">Contact</a>
+  </nav>
+
+  <!-- HERO IMAGE -->
+  <figure class="hero-image">
+    <img src="Crime Scene.png" alt="Sticky notes and evidence tape covering an entire office wall">
+    <figcaption>Kelly&rsquo;s workspace, which coworkers describe as &ldquo;either genius or a cry for help.&rdquo;</figcaption>
+  </figure>
+
+  <div class="content">
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- LEAD STORY -->
+    <!-- ════════════════════════════════════════════ -->
+    <section class="lead" id="lead">
+      <div class="lead-kicker">Breaking</div>
+      <h1>Area Woman Spends 10 Years Transforming Complexity Into Clarity; Nobody Notices Because That&rsquo;s The Whole Point</h1>
+      <p class="dek">Sources confirm 20+ projects across 6 industries. Confusion levels at historic lows.</p>
+      <div class="lead-body">
+        <figure class="lead-portrait">
+          <img src="Irina Black and White 2.png" alt="Irina Kelly">
+          <figcaption><strong>Irina Kelly</strong> — seen in what colleagues describe as her &ldquo;I&rsquo;ve already found six problems with your portal&rdquo; expression.</figcaption>
+        </figure>
+        <p>BROOKLYN, NY &mdash; For over a decade, Senior Experience Designer Irina Kelly has been quietly entering enterprise organizations, locating their most confusing software, and making it simply work &mdash; a practice experts describe as &ldquo;deeply suspicious&rdquo; given how rarely it occurs.</p>
+        <p>&ldquo;She just kept making things better,&rdquo; said one visibly confused executive at a leading automotive retailer, who asked not to be named because he still doesn&rsquo;t fully understand what happened. &ldquo;We had a perfectly terrible portal. Users hated it. We&rsquo;d accepted that. Then she showed up, and now people are using it <em>voluntarily</em>. It&rsquo;s destabilizing.&rdquo;</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- STATS BAR -->
+    <!-- ════════════════════════════════════════════ -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Years Of Confusion Eliminated</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Portals Rescued</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">6</div>
+        <div class="stat-label">Industries, None Of Which Asked</div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- CERTIFICATIONS DESK -->
+    <!-- ════════════════════════════════════════════ -->
+    <div class="section-head" id="certs">
+      <h3>Certifications Desk</h3>
+      <span class="hint">All titles verified, unfortunately</span>
+    </div>
+    <div class="cert-strip">
+      <article class="cert">
+        <span class="exhibit">Exhibit A</span>
+        <h4>Local Designer Amasses Frankly Illegal Number Of Salesforce Certifications</h4>
+        <p>Agentforce Specialist. Data 360 Consultant. Platform Administrator. Platform UX Designer. Any one would be a respectable career; all four at once has been referred to a committee.</p>
+      </article>
+      <article class="cert">
+        <span class="exhibit">Exhibit B</span>
+        <h4>Woman Named &ldquo;Agentforce Legend&rdquo; Two Years Running</h4>
+        <p>The 2025 designation was impressive. The 2026 repeat &ldquo;moved it from achievement to pattern.&rdquo; The title may now simply be permanent.</p>
+      </article>
+      <article class="cert">
+        <span class="exhibit">Exhibit C</span>
+        <h4>Data Cloud Exam Prep Turned Into AI-Generated Podcast</h4>
+        <p>Kelly fed her Quizlet questions into NotebookLM, generated a personal podcast, then passed the exam. Flashcards nationwide have requested a meeting.</p>
+      </article>
+      <article class="cert">
+        <span class="exhibit">Exhibit D</span>
+        <h4>Stanford And Pratt Both Claim Credit For Same Designer</h4>
+        <p>Stanford cites UI/UX for AI Products and Vibe Coding. Pratt cites AI Design, where Kelly now teaches. Neither will concede, and frankly, neither should.</p>
+      </article>
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- NEWS BRIEFS -->
+    <!-- ════════════════════════════════════════════ -->
+    <div class="section-head" id="briefs">
+      <h3>News Briefs</h3>
+      <span class="hint">Dispatches from six transformed industries</span>
+    </div>
+    <div class="news-grid">
+      <div class="news-featured">
+        <h4>Enterprise Project Delivered On Schedule; Coworkers Still Processing</h4>
+        <p class="dek-sm">A leading consumer brand&rsquo;s Agentforce went live October 2025, reportedly &ldquo;on the date she said.&rdquo;</p>
+        <p>Kelly reportedly led the full implementation &mdash; conversational design guidelines, FAQ flows, a redesigned chat experience &mdash; then launched it on the agreed date, an act witnesses called &ldquo;technically legal, but unsettling.&rdquo; When reporters asked what &ldquo;on schedule&rdquo; meant, sources could only repeat, quietly: &ldquo;the date she said.&rdquo;</p>
+      </div>
+      <div class="news-side">
+        <article class="brief">
+          <h4>Area Hospital&rsquo;s Software Adoption Up 54% After Someone Finally Asks Doctors What They Need</h4>
+          <p>A research-backed UX intervention at a premier academic medical center. Someone asked. Adoption rose 54% among physicians, a population historically willing to fax.</p>
+        </article>
+        <article class="brief">
+          <h4>Auto Retailer&rsquo;s Partner Portal No Longer Hated; Executives &ldquo;Destabilized&rdquo;</h4>
+          <p>Self-service, order visibility, a unified experience &mdash; resolving pain points partners had assumed were load-bearing.</p>
+        </article>
+      </div>
+    </div>
+    <div class="news-row">
+      <article class="brief">
+        <h4>Homebuilders Discover Software Can Feel Human; &ldquo;Didn&rsquo;t Know That Was An Option&rdquo;</h4>
+        <p>Consumer-grade design for a national homebuilder&rsquo;s high-traffic portal. Thousands of homeowners now use enterprise software without visible suffering.</p>
+      </article>
+      <article class="brief">
+        <h4>Contractors Now Receiving Leads At Alarming Speed; Dashboard Accused Of Being Actually Useful</h4>
+        <p>The contractor-facing Experience Cloud portal streamlined speed-to-lead and surfaced actionable data, driving real engagement and revenue growth. One dashboard has been asked to slow down.</p>
+      </article>
+      <article class="brief">
+        <h4>Man Who Builds Things For A Living Reportedly Impressed By How Well Portal Was Built</h4>
+        <p>Kelly directed the Experience Cloud implementation and delivered a production-ready portal for a construction manufacturing leader. A local builder inspected the craftsmanship, nodded slowly, and confirmed it &ldquo;would pass code.&rdquo;</p>
+      </article>
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- PULL QUOTE BAND -->
+    <!-- ════════════════════════════════════════════ -->
+    <section class="pull-band">
+      <blockquote>&ldquo;Nobody has complained about user experience in six months. We are concerned.&rdquo;</blockquote>
+      <cite>Executive, Leading Automotive Retailer, Filing A Complaint About The Absence Of Complaints</cite>
+    </section>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- AI & THOUGHT LEADERSHIP DESK -->
+    <!-- ════════════════════════════════════════════ -->
+    <div class="section-head" id="ai">
+      <h3>AI &amp; Thought Leadership Desk</h3>
+      <span class="hint">Human&ndash;robot relations, mediated daily</span>
+    </div>
+    <div class="ai-lead">
+      <div>
+        <h4>Woman Teaches Robots To Talk Like People And People To Talk To Robots; Refuses To Pick A Side</h4>
+        <p class="dek-sm">Both species report satisfaction.</p>
+      </div>
+      <p>By day, Kelly designs conversational AI experiences on Agentforce. By other parts of the day, she teaches AI Design at Pratt and trains humans in prompt engineering. Diplomats describe her as &ldquo;the only neutral party left.&rdquo;</p>
+    </div>
+    <div class="ai-trio">
+      <article class="brief">
+        <h4>Woman Teaches Entire Room How To Talk To AI; AI Reportedly &ldquo;Finally Feeling Heard&rdquo;</h4>
+        <p>Her presentation on advanced prompting techniques sent a room of skeptics out the door writing noticeably better prompts. The AI&rsquo;s answers improved immediately, a change it attributes to &ldquo;someone finally using their words.&rdquo;</p>
+      </article>
+      <article class="brief">
+        <h4>Woman Builds 3 AI Agents In 5 Weeks; All 3 Immediately Request PTO</h4>
+        <p>The intensive Agentforce bootcamp required hands-on development of three agents for Experience Cloud sites, with complex flows and AI integrations. All three remain employed. The PTO requests are pending.</p>
+      </article>
+      <article class="brief">
+        <h4>Article On AI In Design Published Without A Single Empty Buzzword</h4>
+        <p>&ldquo;AI in Design 2025: What Real Use Taught Us,&rdquo; on the Salesforce 360 Blog, drew its conclusions from actual use &mdash; a technique historians believed lost.</p>
+      </article>
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- EDITOR'S NOTE -->
+    <!-- ════════════════════════════════════════════ -->
+    <section class="editors-note">
+      <div class="en-label">Editor&rsquo;s Note</div>
+      <p>Readers have asked whether this publication is biased in favor of its subject. We wish to clarify: <em>The Onion</em> reports only verified facts. If those facts consistently make one Brooklyn-based experience designer look extremely qualified, we encourage readers to take it up with reality, which has repeatedly declined to comment.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- UNSOLICITED PRAISE -->
+    <!-- ════════════════════════════════════════════ -->
+    <div class="section-head" id="praise">
+      <h3>Unsolicited Praise, Verified</h3>
+      <span class="hint">Witnesses were not coached</span>
+    </div>
+    <div class="quotes-grid">
+      <div class="quote-col">
+        <span class="mark">&ldquo;</span>
+        <h4>&ldquo;She Crushed It,&rdquo; Reports Director Who&rsquo;s Still Looking For The Pieces</h4>
+        <p class="quote-body">&ldquo;She crushed it!&rdquo; &mdash; Kate Loftus, Engagement Delivery Director, recorded at the consumer brand launch. Witness declined to elaborate, citing the completeness of the crushing.</p>
+      </div>
+      <div class="quote-col">
+        <span class="mark">&ldquo;</span>
+        <h4>&ldquo;She Is Working At The Next Level&rdquo; Says Manager Who Is Unable To Specify Exactly Which Level</h4>
+        <p class="quote-body">&ldquo;I believe she has been working at the next level for the duration of this program.&rdquo; &mdash; Christopher Robson, Engagement Delivery Director. When pressed to identify the level, he gestured upward and left the room.</p>
+      </div>
+      <div class="quote-col">
+        <span class="mark">&ldquo;</span>
+        <h4>&ldquo;She Will Truly Be Missed&rdquo; &mdash; Product Owner, Reportedly Filing Formal Grief Paperwork</h4>
+        <p class="quote-body">&ldquo;Her UX experience and attention to detail has been impeccable.&rdquo; &mdash; James Hogan, UX Product Owner, Valvoline. HR confirms grief paperwork does not exist but has agreed to look into it.</p>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════ -->
+    <!-- CONTACT -->
+    <!-- ════════════════════════════════════════════ -->
+    <div class="connect-box" id="classifieds">
+      <div class="connect-label">Let&rsquo;s Connect</div>
+      <h4 class="connect-hed">Interested In Experience Cloud, Agentforce, Or AI-Native Design Strategies?</h4>
+      <p class="connect-body">Kelly says she&rsquo;d love to hear from you&mdash;whether it&rsquo;s a project collaboration, a speaking engagement, or just a conversation about where AI and design are heading. Sources confirm she means this, which is unusual for a professional bio.</p>
+      <div class="connect-links">
+        <a href="mailto:irinakelly1@gmail.com" class="btn-primary">Email (She&rsquo;ll Actually Reply)</a>
+        <a href="https://www.linkedin.com/in/irinakelly" class="btn-outline">LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- CORRECTION -->
+    <div class="correction">
+      <div class="correction-label">Correction &bull; July 9, 2026</div>
+      <p>An earlier version of this bio undersold her impact. We regret the error.</p>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">The Onion</div>
+      <div class="footer-links">
+        <a href="mailto:irinakelly1@gmail.com">Email</a>
+        <a href="#">Message on Slack</a>
+        <a href="#">Salesforce Profile</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 The Onion &bull; &ldquo;All The UX That&rsquo;s Fit To Ship&rdquo; &bull; This is satire. The accomplishments are entirely real. Built with AI-assisted creative design as a portfolio piece.
+    </div>
+  </footer>
+
+  <!-- Progress bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <script>
+    // === READING PROGRESS BAR ===
+    const progressBar = document.getElementById('progressBar');
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = Math.min((scrollTop / docHeight) * 100, 100);
+      progressBar.style.width = pct + '%';
+    }
+
+    // === INTERSECTION OBSERVER — scroll reveals with stagger ===
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    // Helper: observe with stagger delay
+    function observeStaggered(selector, baseDelay = 0, increment = 0.1) {
+      document.querySelectorAll(selector).forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (baseDelay + i * increment) + 's';
+        revealObserver.observe(el);
+      });
+    }
+
+    // Section heads
+    observeStaggered('.section-head', 0, 0);
+
+    // Cert strip items — cascade left to right
+    observeStaggered('.cert', 0, 0.12);
+
+    // News items
+    observeStaggered('.news-featured, .news-side .brief, .news-row .brief', 0, 0.08);
+
+    // AI section
+    observeStaggered('.ai-lead, .ai-trio .brief', 0, 0.1);
+
+    // Quotes — cascade
+    observeStaggered('.quote-col', 0, 0.15);
+
+    // Pull band
+    document.querySelectorAll('.pull-band').forEach(el => revealObserver.observe(el));
+
+    // Editor's note
+    observeStaggered('.editors-note', 0, 0);
+
+    // Connect box
+    document.querySelectorAll('.connect-box').forEach(el => {
+      el.classList.add('reveal');
+      revealObserver.observe(el);
+    });
+
+    // Correction
+    observeStaggered('.correction', 0, 0);
+
+    // Stat items — pop with stagger
+    document.querySelectorAll('.stat-item').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.15) + 's';
+      revealObserver.observe(el);
+    });
+
+    // Footer
+    revealObserver.observe(document.querySelector('.site-footer'));
+
+    // === STAT COUNTER ANIMATION ===
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = 'true';
+          const numEl = entry.target.querySelector('.stat-number');
+          const finalText = numEl.textContent;
+          const finalNum = parseInt(finalText);
+          if (isNaN(finalNum)) return;
+
+          const suffix = finalText.replace(/[\d]/g, '');
+          const duration = 1400;
+          const start = performance.now();
+
+          function tick(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            // Elastic ease-out for playful overshoot
+            const eased = 1 - Math.pow(1 - progress, 4);
+            const current = Math.round(finalNum * eased);
+            numEl.textContent = current + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
+          }
+          numEl.textContent = '0' + suffix;
+          requestAnimationFrame(tick);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-item').forEach(el => statObserver.observe(el));
+
+    // === PARALLAX on hero image ===
+    const heroImg = document.querySelector('.hero-image img');
+    function parallaxHero() {
+      if (!heroImg) return;
+      const rect = heroImg.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      if (rect.bottom > 0 && rect.top < windowH) {
+        const scrolled = (windowH - rect.top) / (windowH + rect.height);
+        const offset = (scrolled - 0.5) * 40;
+        heroImg.style.transform = `scale(1.05) translateY(${offset}px)`;
+      }
+    }
+
+    // === ACTIVE SECTION NAV TRACKING ===
+    const navLinks = document.querySelectorAll('.section-nav a');
+    const sections = [];
+    navLinks.forEach(link => {
+      const id = link.getAttribute('href').replace('#', '');
+      const section = document.getElementById(id);
+      if (section) sections.push({ el: section, link });
+    });
+
+    function updateActiveNav() {
+      const scrollY = window.scrollY + 200;
+      let current = sections[0];
+      for (const s of sections) {
+        if (s.el.offsetTop <= scrollY) current = s;
+      }
+      navLinks.forEach(l => l.classList.remove('active'));
+      if (current) current.link.classList.add('active');
+    }
+
+    // === PULL BAND PARALLAX (subtle text float) ===
+    const pullBand = document.querySelector('.pull-band');
+    function parallaxPullBand() {
+      if (!pullBand) return;
+      const rect = pullBand.getBoundingClientRect();
+      const windowH = window.innerHeight;
+      if (rect.bottom > 0 && rect.top < windowH) {
+        const scrolled = (windowH - rect.top) / (windowH + rect.height);
+        const offset = (scrolled - 0.5) * 15;
+        const bq = pullBand.querySelector('blockquote');
+        if (bq) bq.style.transform = `translateY(${offset}px)`;
+      }
+    }
+
+    // === TICKER PAUSE ON HOVER ===
+    const ticker = document.querySelector('.ticker-track');
+    if (ticker) {
+      ticker.addEventListener('mouseenter', () => {
+        ticker.style.animationPlayState = 'paused';
+      });
+      ticker.addEventListener('mouseleave', () => {
+        ticker.style.animationPlayState = 'running';
+      });
+    }
+
+    // === MAGNETIC BUTTON EFFECT ===
+    document.querySelectorAll('.connect-links a').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.15}px, ${y * 0.2}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+
+    // === SCROLL HANDLER (throttled) ===
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateProgress();
+          parallaxHero();
+          parallaxPullBand();
+          updateActiveNav();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // === HERO IMAGE TILT ON MOUSE MOVE ===
+    const heroFigure = document.querySelector('.hero-image');
+    if (heroFigure) {
+      heroFigure.addEventListener('mousemove', (e) => {
+        const rect = heroFigure.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        if (heroImg) {
+          heroImg.style.transform = `scale(1.06) translate(${x * 8}px, ${y * 6}px)`;
+        }
+      });
+      heroFigure.addEventListener('mouseleave', () => {
+        if (heroImg) heroImg.style.transform = '';
+      });
+    }
+
+    // === SECTION HEADS — draw underline on reveal ===
+    document.querySelectorAll('.section-head').forEach(el => {
+      el.style.borderBottom = '2px solid transparent';
+      el.style.transition = 'border-color 0.8s ease 0.3s, opacity 0.7s ease, transform 0.7s ease';
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            el.style.borderBottomColor = 'var(--ink)';
+          }
+        });
+      }, { threshold: 0.3 });
+      obs.observe(el);
+    });
+
+    // Initial calls
+    updateProgress();
+    updateActiveNav();
+  </script>
+
+</body>
+</html>
